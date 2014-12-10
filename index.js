@@ -1,5 +1,5 @@
-var connect = require('connect'),
-    socketio = require('socket.io'),
+var connect = require('./node_modules/midi.io/node_modules/connect'),
+    socketio = require('./node_modules/midi.io/node_modules/socket.io'),
     midi = require('midi.io');
 
 var server = connect.createServer(),
