@@ -50,6 +50,6 @@ io.on('connection', function(socket){
 	io.emit('midi', 'init');
 	input.on('message', function(deltaTime, message) {
 	  console.log('m:' + message + ' d:' + deltaTime);
-	  io.emit('midi', message);
+	  io.emit('midi', message, deltaTime);
 	});	
 });

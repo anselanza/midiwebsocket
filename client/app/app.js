@@ -13,13 +13,6 @@ angular.module('midiserverApp', [
 
     $locationProvider.html5Mode(true);
 
-    var socket = io();
-
-    socket.on('connect', function() {
-      console.log("Connected to socket IO server");
-      socket.on('midi', function(msg) {
-        console.log("Got a message: ", msg);
-      });
-    });    
+   
 
   });
