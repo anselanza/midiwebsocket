@@ -47,7 +47,7 @@ input.openPort(0);
 
 io.on('connection', function(socket){
 	console.log('User connected');
-	io.emit('midi', 'init');
+	// io.emit('midi', 'init');
 	input.on('message', function(deltaTime, message) {
 	  console.log('m:' + message + ' d:' + deltaTime);
 	  io.emit('midi', message, deltaTime);
