@@ -26,6 +26,30 @@ exports = module.exports = app;
 
 var io = require('socket.io')(server);
 
+
+
+
+var midi = require('midi');
+
+// Set up a new input.
+var input = new midi.input();
+
+// Count the available input ports.
+input.getPortCount();
+
+// Get the name of a specified input port.
+input.getPortName(0);
+
+console.log("MIDI device on port 0: ", input.getPortName(0));
+
+// Open the first available input port.
+input.openPort(0);
+
 io.on('connection', function(socket){
-  console.log('a user connected');
+	console.log('User connected');
+	io.emit('midi', 'init');
+	input.on('message', function(deltaTime, message) {
+	  console.log('m:' + message + ' d:' + deltaTime);
+	  io.emit('midi', message);
+	});	
 });
