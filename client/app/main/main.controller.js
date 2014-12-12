@@ -8,6 +8,49 @@ angular.module('midiserverApp')
     //   $scope.awesomeThings = awesomeThings;
     // });
 
+	var controller = new Leap.Controller({
+	      enableGestures: false
+	});
+
+	controller.on('connect', function() {
+	  console.log("Leap Motion connected!");
+
+	  setInterval(function(){
+	      var frame = controller.frame();
+	      var hand = frame.hands[0];
+
+
+	      // if (hand) {
+	      //   var actualHeight = hand.palmPosition[1];
+	      //   var mappedHeight = floor(map(actualHeight, 100, 400, 0, scaleArray.length));
+	      //   mappedHeight = constrain(mappedHeight, 0, scaleArray.length-1);
+	      //   var grabStrength = hand.grabStrength;
+	      //   volNormalised = 1-grabStrength;
+	      //   var rotation = hand.roll();
+	      //   // console.log("actualHeight: ", actualHeight, " / mappedHeight: ", mappedHeight, "grabStrength: ", grabStrength, "rotation: ", rotation);
+
+	      //   note = mappedHeight;
+
+	      //   var midiValue = scaleArray[note];
+	      //   var freqValue = midiToFreq(midiValue);
+
+	      //   synth.triggerAttackRelease(scaleArray[note]);
+	      //   var volDb = 0 - grabStrength * 50;
+	      //   synth.setVolume(volDb, 0.05);
+	      //   // osc.freq(freqValue, 0.1);
+	      //   // osc.amp(1-grabStrength, 0.05);
+
+	      // } else {
+	      //   synth.setVolume(-100, 1);
+	      //   // osc.amp(0, 1);
+	      // }
+
+
+	  }, 50);
+
+	});
+
+	controller.connect();
 
 	var socket = io();
 
