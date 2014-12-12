@@ -7,13 +7,11 @@ angular.module('midiserverApp')
       restrict: 'E',
       link: function (scope, element, attrs) {
 
-      	console.log(p5);
+      	// console.log(p5);
       	
-      	var p = new p5();
+      	var p = new p5(); // setup() called here with defaults
         
-      	p.setup = function() {
-      		resizeCanvas(400,400);
-      	}
+      	p.resizeCanvas(400,400);
 
       	p.draw = function() {
       		background(0);
